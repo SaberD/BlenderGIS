@@ -82,6 +82,8 @@ class IMPORTGIS_OT_dem_query(Operator):
 			self.report({'ERROR'}, "Too large extent")
 			return {'CANCELLED'}
 
+		tmpBbox = reprojBbox(geoscn.crs, 25833, bbox)
+		log.debug(tmpBbox)
 		bbox = reprojBbox(geoscn.crs, 4326, bbox)
 
 		if 'SRTM' in prefs.demServer:
